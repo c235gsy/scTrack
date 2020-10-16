@@ -195,7 +195,7 @@ If **R** or **r**, you also need to install **Python** package **rpy2** in order
  -------
 **--smoothness(-s) :**  *float*
 
-Positive smoothing factor used to choose the number of knots. **-s = smoothness$*$[point_number_in_curve]**. More information: [https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.UnivariateSpline.html](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.UnivariateSpline.html)
+Positive smoothing factor used to choose the number of knots. **-s = smoothness\*[point_number_in_curve]**. More information: [https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.UnivariateSpline.html](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.UnivariateSpline.html)
 
 ### Author
 Siyuan Guo 11611118@mail.sustech.edu.cn
