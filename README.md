@@ -42,7 +42,7 @@ python analyze_paths.py -e ./test/exp_matrix.txt -c ./test/ident.txt -o ./test/o
 
 #### get_paths.py
 
-Firstly, run **get_paths.py** to get the general structure of the cell lineage, and the user will get **a path file**. 
+Firstly, run **get_paths.py** to get the general structure of the cell lineage, and the user will get **path files**, which could be the input of **analyze_paths.py**.
 
 -------
 
