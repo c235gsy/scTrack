@@ -57,7 +57,7 @@ Firstly, run **get_paths.py** to get the general structure of the cell lineage, 
 -------
 > **--expMatrix(-e) :**  *file path* **(required)**
 
-> File path of expression matrix.
+> File path of expression matrix. The file should only contain numbers and the delimiter should be "$\t$".
 
 -------
 > **--clusterArray(-c) :**  *file path* **(required)**
@@ -77,7 +77,7 @@ Firstly, run **get_paths.py** to get the general structure of the cell lineage, 
 -------
 > **--nComponentsLDA(-nl) :**  *integer*
 
-> the data dimension retained by LDA dimensionality reduction. Note that this parameter should not be greater than **[cell_cluster_number]-1**. By default it is equal to **min[[cell_cluster_number]-1, --nComponentsPCA]**.
+> The data dimension retained by LDA dimensionality reduction. Note that this parameter should not be greater than **[cell_cluster_number]-1**. By default it is equal to **min[[cell_cluster_number]-1, --nComponentsPCA]**.
 
 -------
 > **--sizeSubcluster(-s) :**  *float*
@@ -143,7 +143,7 @@ You can view and modify the **xxx_paths.txt** or **xxx_all_paths.txt**, and run 
 -------
 > **--expMatrix(-e) :**  *file path* **(required)**
 
-> File path of expression matrix.
+> File path of expression matrix. The file should only contain numbers and the delimiter should be "$\t$".
 
 -------
 > **--clusterArray(-c) :**  *file path* **(required)**
@@ -168,7 +168,7 @@ You can view and modify the **xxx_paths.txt** or **xxx_all_paths.txt**, and run 
 -------
 > **--nComponentsLDA(-nl) :**  *integer*
 
-> the data dimension retained by LDA dimensionality reduction. Note that this parameter should not be greater than **[cell_cluster_number]-1**. By default it is equal to **min[[cell_cluster_number]-1, --nComponentsPCA]**.
+> The data dimension retained by LDA dimensionality reduction. Note that this parameter should not be greater than **[cell_cluster_number]-1**. By default it is equal to **min[[cell_cluster_number]-1, --nComponentsPCA]**.
 
 -------
 > **--maxIter(-mi) :**  *integer*
@@ -213,7 +213,9 @@ You can view and modify the **xxx_paths.txt** or **xxx_all_paths.txt**, and run 
  -------
 > **--smoothness(-s) :**  *float*
 
-> Positive smoothing factor used to choose the number of knots. **-s = smoothness\*[point_number_in_curve]**, **default=1.0**. More information: [https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.UnivariateSpline.html](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.UnivariateSpline.html)
+> Positive smoothing factor used to choose the number of knots. 
+> **s = --smoothness(-s) \* [point_number_in_curve]**, **default=1.0**. 
+> More information: [https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.UnivariateSpline.html](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.UnivariateSpline.html)
 
 ### Author
 Siyuan Guo 11611118@mail.sustech.edu.cn
