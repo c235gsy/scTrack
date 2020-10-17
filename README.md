@@ -46,7 +46,7 @@ Firstly, run **get_paths.py** to get the general structure of the cell lineage, 
 
 -------
 
-#####Output
+##### Output
 
 * xxx_paths.txt
     - This file contains the filtered inferred paths. The format of lines in **xxx_paths.txt** is **[path_name, path_score, cluster1_in_path, cluster2_in_path, cluster3_in_pat, ...... ]**.
@@ -69,7 +69,7 @@ Firstly, run **get_paths.py** to get the general structure of the cell lineage, 
 
 -------
 
-#####Parameters 
+##### Parameters 
 
 > **--expMatrix(-e) :**  *file path* **(required)**
 
@@ -158,7 +158,7 @@ You can view and modify the **xxx_paths.txt** or **xxx_all_paths.txt**, and run 
 
 -------
 
-#####Output
+##### Output
 
 * xxx_filter_pseudotime.csv
     - The pseudotime information of the data point corresponding to the filtered cell.
@@ -190,7 +190,7 @@ You can view and modify the **xxx_paths.txt** or **xxx_all_paths.txt**, and run 
 * xxx_plot3D_pseudotime_eX_aX.pdf
 
 -------
-#####Parameters 
+##### Parameters 
 
 > **--expMatrix(-e) :**  *file path* **(required)**
 
