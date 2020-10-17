@@ -42,22 +42,38 @@ python analyze_paths.py -e ./test/exp_matrix.txt -c ./test/ident.txt -o ./test/o
 
 #### get_paths.py
 
-Firstly, run **get_paths.py** to get the general structure of the cell lineage, and the user will get **a path file**. The output will contain **xxx_paths.txt, xxx_all_paths.txt, xxx_BF.txt, xxx_BF.pdf.**
-
-* xxx_paths.txt
-    - **_This file contains the filtered inferred paths._** The format of lines in **xxx_paths.txt** is **[path_name, path_score, cluster1_in_path, cluster2_in_path, cluster3_in_pat, ...... ]**.
-* xxx_all_paths.txt
-    - **_This file contains all paths inferred._** The format of lines in **xxx_paths.txt** is **[path_name, path_score, cluster1_in_path, cluster2_in_path, cluster3_in_pat, ...... ]**.
-* xxx_BF.txt
-    - **_This file contains the Bayes Factor Matrix between cell clusters._**
-* xxx_BF.pdf
-    - Only output if the user use **--plotBayesFactorMatrix(-pbf)**
-    - **_This is the heatmap of the Bayes Factor Matrix between cell clusters._**
+Firstly, run **get_paths.py** to get the general structure of the cell lineage, and the user will get **a path file**. 
 
 -------
+
+#####Output
+
+* xxx_paths.txt
+    - This file contains the filtered inferred paths. The format of lines in **xxx_paths.txt** is **[path_name, path_score, cluster1_in_path, cluster2_in_path, cluster3_in_pat, ...... ]**.
+
+-------
+
+* xxx_all_paths.txt
+    - This file contains all paths inferred. The format of lines in **xxx_paths.txt** is **[path_name, path_score, cluster1_in_path, cluster2_in_path, cluster3_in_pat, ...... ]**.
+
+-------
+
+* xxx_BF.txt
+    - This file contains the Bayes Factor Matrix between cell clusters.
+    
+-------
+
+* xxx_BF.pdf
+    - Only output if the user use **--plotBayesFactorMatrix(-pbf)**
+    - This is the heatmap of the Bayes Factor Matrix between cell clusters.
+
+-------
+
+#####Parameters 
+
 > **--expMatrix(-e) :**  *file path* **(required)**
 
-> File path of expression matrix. The file should only contain numbers and the delimiter should be "$\t$".
+> File path of expression matrix. The file should only contain numbers and the delimiter should be "\t".
 
 -------
 > **--clusterArray(-c) :**  *file path* **(required)**
@@ -141,9 +157,44 @@ Firstly, run **get_paths.py** to get the general structure of the cell lineage, 
 You can view and modify the **xxx_paths.txt** or **xxx_all_paths.txt**, and run the second step of the program **analyze_paths.py** to complete the trajectory inference, where **xxx_paths.txt** or **xxx_all_paths.txt** is one of the input files. 
 
 -------
+
+#####Output
+
+* xxx_filter_pseudotime.csv
+    - The pseudotime information of the data point corresponding to the filtered cell.
+
+-------
+
+* xxx_curveX_for_plot.csv
+    - The coordinate information of the data point in the curveX corresponding to the filtered cell.
+
+-------
+
+* xxx_point_for_plot.csv
+    - The coordinate information of the data point corresponding to the filtered cell.
+
+-------
+
+* xxx_plot.pdf
+ 
+-------
+
+* xxx_plot_pseudotime.pdf
+   
+-------
+
+* xxx_plot3D_eX_aX.pdf
+    
+-------
+
+* xxx_plot3D_pseudotime_eX_aX.pdf
+
+-------
+#####Parameters 
+
 > **--expMatrix(-e) :**  *file path* **(required)**
 
-> File path of expression matrix. The file should only contain numbers and the delimiter should be "$\t$".
+> File path of expression matrix. The file should only contain numbers and the delimiter should be "\t".
 
 -------
 > **--clusterArray(-c) :**  *file path* **(required)**
