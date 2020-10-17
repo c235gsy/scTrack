@@ -138,7 +138,7 @@ Firstly, run **get_paths.py** to get the general structure of the cell lineage, 
 
 #### analyze_paths.py
 
-You can view and modify the path file, and run the second step of the program **analyze_paths.py** to complete the trajectory inference. 
+You can view and modify the **xxx_paths.txt** or **xxx_all_paths.txt**, and run the second step of the program **analyze_paths.py** to complete the trajectory inference, where **xxx_paths.txt** or **xxx_all_paths.txt** is one of the input files. 
 
 -------
 > **--expMatrix(-e) :**  *file path* **(required)**
