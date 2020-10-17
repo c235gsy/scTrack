@@ -5,7 +5,7 @@
 
 ### Before using
 
-###### Modules scTrack depend on 
+#### Modules scTrack depend on 
 
 > 1. Python3
 > 2. numpy
@@ -17,11 +17,11 @@
 > 8. rpy2
 > 9. R
 
-###### Install those Modules
+#### Install those Modules
 
 [Anaconda](https://www.anaconda.com/products/individual) is recommended to used to install the modules which the scTrack depends on. 
 
-###### Test
+### Test
 
 After successfully installing anaconda, you can run the following code.
 
@@ -32,23 +32,27 @@ conda install scikit-learn seaborn rpy2 matplotblib r-base numpy pandas colour
 After cloning this repository, you can run the following code to test. (Before running code, you need to decompressing the file **test.zip**)
 
 ```
-python get_paths.py -e ./data_T_CD4/exp_matrix.txt -c ./data_T_CD4/ident.txt -o Test -b "[1]" -d "[3,4]" -ul -pbf  
-python analyze_paths.py -e ./data_T_CD4/exp_matrix.txt -c ./data_T_CD4/ident.txt -o Test -i ./data_T_CD4/cell_id.txt -p ./Test_paths.txt -p2D -p3D -cm R -s 1 -cd -cb
+python get_paths.py -e ./test/exp_matrix.txt -c ./test/ident.txt -o ./test/output/Test -b "[1]" -d "[3,4]" -ul -pbf  
+python analyze_paths.py -e ./test/exp_matrix.txt -c ./test/ident.txt -o ./test/output/Test -i ./test/cell_id.txt -p ./test/output/Test_paths.txt -p2D -p3D -cd -cb
 ```
 
 ### Description of the parameters
 
+-------
+
 #### get_paths.py
 
--------
-**--expMatrix(-e) :**  *file path* **(required)**
-
-File path of expression matrix.
+Firstly, run **get_paths.py** to get the general structure of the cell lineage.
 
 -------
-**--clusterArray(-c) :**  *file path* **(required)**
+> **--expMatrix(-e) :**  *file path* **(required)**
 
-File path of cell cluster marker array, the number of clusters should not be less than 3.
+> File path of expression matrix.
+
+-------
+> **--clusterArray(-c) :**  *file path* **(required)**
+
+> File path of cell cluster marker array, _the number of clusters should not be less than 3._
 
 -------
 **--output(-o) :**  *string* 
@@ -130,7 +134,7 @@ File path of expression matrix.
 -------
 **--clusterArray(-c) :**  *file path* **(required)**
 
-File path of cell cluster marker array, the number of clusters should not be less than 3.
+File path of cell cluster marker array, _the number of clusters should not be less than 3._
 
 -------
 **--output(-o) :**  *string* 
@@ -163,7 +167,7 @@ The maximum number of iterations in the principal curve fitting process, **defau
 The iterations in the principal curve fitting process will stop if the rate of change between the point and its corresponding point on the curve is less than this value, **default=0.001**.
  
  -------
-**--pathFile(-p) :**  *file path*
+**--pathFile(-p) :**  *file path* **(required)**
 
 The path of the path-file inferred in the previous step.
 
@@ -190,12 +194,12 @@ If used, combining the shared parts of paths in the destination.
  -------
 **--colorMap(-cm) :**  *string* **(Only can be chosen form {R,r,Python,py})**
 
-If **R** or **r**, you also need to install **Python** package **rpy2** in order touse the function **hue_pal()** in **R** to get colormap. But the **hue_pal()** do not use standard **HUE space**. If **Python** or **py**, program will use **Python** package **Colour**, where the standard **HUE space** is used.
+If **R** or **r**, you also need to install **Python** package **rpy2** in order touse the function **hue_pal()** in **R** to get colormap. But the **hue_pal()** do not use standard **HUE space**. If **Python** or **py**, program will use **Python** package **Colour**, where the standard **HUE space** is used, **default=R**.
 
  -------
 **--smoothness(-s) :**  *float*
 
-Positive smoothing factor used to choose the number of knots. **-s = smoothness\*[point_number_in_curve]**. More information: [https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.UnivariateSpline.html](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.UnivariateSpline.html)
+Positive smoothing factor used to choose the number of knots. **-s = smoothness\*[point_number_in_curve]**, **default=1.0**. More information: [https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.UnivariateSpline.html](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.UnivariateSpline.html)
 
 ### Author
 Siyuan Guo 11611118@mail.sustech.edu.cn
