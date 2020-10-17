@@ -42,15 +42,15 @@ python analyze_paths.py -e ./test/exp_matrix.txt -c ./test/ident.txt -o ./test/o
 
 #### get_paths.py
 
-Firstly, run **get_paths.py** to get the general structure of the cell lineage, and the user will get **a path file**. The output will contain **xxx_paths.txt, xxx_all_paths.txt, xxx_paths_BF.txt, xxx_paths_BF.pdf.**
+Firstly, run **get_paths.py** to get the general structure of the cell lineage, and the user will get **a path file**. The output will contain **xxx_paths.txt, xxx_all_paths.txt, xxx_BF.txt, xxx_BF.pdf.**
 
 * xxx_paths.txt
     - **_This file contains the filtered inferred paths._** The format of lines in **xxx_paths.txt** is **[path_name, path_score, cluster1_in_path, cluster2_in_path, cluster3_in_pat, ...... ]**.
 * xxx_all_paths.txt
     - **_This file contains all paths inferred._** The format of lines in **xxx_paths.txt** is **[path_name, path_score, cluster1_in_path, cluster2_in_path, cluster3_in_pat, ...... ]**.
-* xxx_paths_BF.txt
+* xxx_BF.txt
     - **_This file contains the Bayes Factor Matrix between cell clusters._**
-* xxx_paths_BF.pdf
+* xxx_BF.pdf
     - Only output if the user use **--plotBayesFactorMatrix(-pbf)**
     - **_This is the heatmap of the Bayes Factor Matrix between cell clusters._**
 
