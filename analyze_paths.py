@@ -1,7 +1,6 @@
 import time
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 from sklearn.decomposition import PCA
-import color_for_plot
 import sys
 from mpl_toolkits.mplot3d import Axes3D
 import get_parameters
@@ -42,11 +41,7 @@ used_cell_array = np.where ([ct in used_cell_types for ct in cell_type_array])[0
 expression_matrix = expression_matrix[used_cell_array]
 cell_type_array = cell_type_array[used_cell_array]
 
-colors = None
-if parameters.colorMap in ["R", "r"]:
-    colors = color_for_plot.get_color_list_R (n=len (used_cell_types))
-if parameters.colorMap in ["Python", "py"]:
-    colors = color_for_plot.get_color_list_py (n=len (used_cell_types))
+colors = get_color_list (n=len (used_cell_types))
 color_dic_celltype = {used_cell_types[i]: colors[i] for i in range (len (used_cell_types))}
 
 gene_number = len (expression_matrix[0])

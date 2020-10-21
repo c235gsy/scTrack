@@ -280,4 +280,18 @@ def curve_2_pseudotime(curve):
     return pseudotime
 
 
+def get_color_list(n, hue_start=1/24, hue_end=1, saturation=1, luminance=0.65):
+    import colour
+    if n <= 0:
+        print("n should be bigger than 0")
+        return
+    elif 0 <= hue_end <= 1 and 0 <= hue_start <= 1:
+        out = []
+        diss = (hue_end - hue_start) / n
+        for i in range(n):
+            out.append(colour.Color(hsl=(hue_start + i*diss, saturation, luminance)).hex_l)
+        return out
+
+
+
 # End

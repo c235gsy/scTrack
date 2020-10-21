@@ -187,13 +187,6 @@ def parse_args_ananlyze_paths():
     parser.add_argument('-p3D', '--plot3D', action="store_true",
                         help='If used, plotting a lot 3D data figures.')
 
-    parser.add_argument('-cm', '--colorMap', type=str, default="R", choices=["R", "r", "Python", "py"],
-                        help='If R or r, you also need to install Python package rpy2 in order to'
-                             'use the function hue_pal() in R to get colormap. '
-                             'But the hue_pal() do not use standard hue space. '
-                             'If Python or py, program will use Python package colour, '
-                             'where the standard hue space is used.')
-
     parser.add_argument('-s', '--smoothness', type=float, default=1.0,
                         help='Positive smoothing factor used to choose the number of knots. '
                              's = smoothness*[point_number_in_curve]'

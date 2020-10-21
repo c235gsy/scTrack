@@ -14,8 +14,6 @@
 > 5. matplotblib
 > 6. seaborn
 > 7. colour
-> 8. rpy2
-> 9. R
 
 #### Install those Modules
 
@@ -26,7 +24,7 @@
 After successfully installing anaconda, you can run the following code.
 
 ```
-conda install scikit-learn seaborn rpy2 matplotblib r-base numpy pandas colour 
+conda install scikit-learn seaborn matplotblib numpy pandas colour 
 ```
 
 After cloning this repository, you can run the following code to test. (Before running code, you need to decompressing the file **test.zip**)
@@ -256,11 +254,6 @@ You can view and modify the **xxx_paths.txt** or **xxx_all_paths.txt**, and run 
 
 >  If used, plotting  a lot 3D data figures.
  
- -------
-> **--colorMap(-cm) :**  *string* **(Only can be chosen form {R,r,Python,py})**
-
-> If **R** or **r**, you also need to install **Python** package **rpy2** in order touse the function **hue_pal()** in **R** to get colormap. But the **hue_pal()** do not use standard **HUE space**. If **Python** or **py**, program will use **Python** package **Colour**, where the standard **HUE space** is used, **default=R**.
-
  -------
 > **--smoothness(-s) :**  *float*
 
