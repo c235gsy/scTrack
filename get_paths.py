@@ -242,7 +242,8 @@ for indexs_list in final_paths_indexs:
     the_avgbf = [paths[m][0] for m in indexs_list]
     final_paths.append (the_path[the_avgbf.index (max (the_avgbf))])
 
-final_paths.sort(key=lambda x: len(x[1]), reverse=True)
+final_paths.sort(reverse=True)
+paths.sort(reverse=True)
 for p in final_paths:
     print(p)
 
