@@ -69,7 +69,7 @@ if n_components_pca < n_components_lda:
     print ("--nComponentsPCA(-np) should not be less than --nComponentsLDA(-nl)")
     sys.exit (0)
 
-expression_matrix = PCA (n_components=n_components_pca).fit_transform (expression_matrix)
+expression_matrix = PCA (n_components=n_components_pca, svd_solver="full").fit_transform (expression_matrix)
 print ("Matrix shape after PCA: ", expression_matrix.shape)
 expression_matrix = LDA (n_components=n_components_lda).fit_transform (expression_matrix, cell_type_array)
 print ("Matrix shape after LDA: ", expression_matrix.shape)

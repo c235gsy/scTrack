@@ -39,7 +39,7 @@ if n_components_pca < n_components_lda:
     print("--nComponentsPCA(-np) should not be less than --nComponentsLDA(-nl)")
     sys.exit (0)
 
-expression_matrix = PCA (n_components=n_components_pca).fit_transform (expression_matrix)
+expression_matrix = PCA (n_components=n_components_pca, svd_solver="full").fit_transform (expression_matrix)
 print("Matrix shape after PCA: ", expression_matrix.shape)
 expression_matrix = LDA (n_components=n_components_lda).fit_transform (expression_matrix, cell_type_array)
 print("Matrix shape after LDA: ", expression_matrix.shape)
@@ -222,7 +222,7 @@ for temp1 in range(1, len(final_paths_sets)):
     for temp2 in range(len(temp_final_paths_sets)):
         old_set = temp_final_paths_sets[temp2]
         if new_set == old_set:
-            temp_final_paths_indexs[temp2] += final_paths_indexs[temp1]
+            temp_final_paths_indexs[temp2] |= final_paths_indexs[temp1]
             flag_found = True
         # elif new_set > old_set:
         #     temp_final_paths_sets[temp2] = new_set
