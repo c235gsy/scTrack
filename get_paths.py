@@ -1,5 +1,6 @@
 import time
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
+from sklearn.covariance import OAS
 from sklearn.decomposition import PCA
 from utils import *
 import sys
@@ -41,7 +42,10 @@ if n_components_pca < n_components_lda:
 
 expression_matrix = PCA (n_components=n_components_pca, svd_solver="full").fit_transform (expression_matrix)
 print("Matrix shape after PCA: ", expression_matrix.shape)
-expression_matrix = LDA (n_components=n_components_lda).fit_transform (expression_matrix, cell_type_array)
+oa = OAS(store_precision=False, assume_centered=False)
+expression_matrix = LDA (n_components=n_components_lda,
+                         covariance_estimator=OAS(store_precision=False, assume_centered=False),
+                         solver='eigen').fit_transform (expression_matrix, cell_type_array)
 print("Matrix shape after LDA: ", expression_matrix.shape)
 
 average_size_subclusters = parameters.sizeSubcluster
@@ -67,8 +71,8 @@ celltype_centers_dis_matrix = get_distance_matricx (celltype_centers, all_cell_t
 
 celltype_centers_bf_matrix = get_bayes_factor_matrix(expression_matrix, cell_type_array, all_cell_types,
                                                      num_calculation=parameters.nCalculationBayesFactor)
-# print("Bayes Factor Matirx: ")
-# print(celltype_centers_bf_matrix)
+print("Bayes Factor Matirx: ")
+print(celltype_centers_bf_matrix)
 celltype_centers_bf_matrix.rename (index=lambda x: "to_" + x).to_csv("{}_BF.txt".format(output_file), sep="\t",
                                                                      header=True, index=True, float_format="%f")
 
@@ -185,9 +189,15 @@ else:
             print ("No new end is found.")
 
     else:
-        print ("Ignoring unlisted end points.")
+        print ("Ignoring unlisted end points: {} paths -->>".format(len(paths)), end=" ")
         paths = [path for path in paths if path[-1] in end_points]
+        print("{} paths".format(len(paths)))
 
+if len(paths) == 0:
+    print("Sorry, no path was left with the listed end points, "
+          "maybe you can add more points in the list "
+          "or use --newDestination(-nd)")
+    sys.exit (0)
 
 paths = [(get_score_of_a_path(celltype_centers_bf_matrix, path), path) for path in paths]
 paths.sort (key=lambda x: len(x[1]))

@@ -1,5 +1,6 @@
 import time
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
+from sklearn.covariance import OAS
 from sklearn.decomposition import PCA
 import sys
 from mpl_toolkits.mplot3d import Axes3D
@@ -46,7 +47,7 @@ color_dic_celltype = {used_cell_types[i]: colors[i] for i in range (len (used_ce
 
 gene_number = len (expression_matrix[0])
 used_cell_number = len (expression_matrix)
-used_cell_cluster_number = len (all_cell_types)
+used_cell_cluster_number = len (used_cell_types)
 print ("Data information :")
 print ("gene : ", gene_number)
 print ("all cell: ", all_cell_number)
@@ -59,7 +60,7 @@ for k, v in paths.items ():
 
 n_components_pca = parameters.nComponentsPCA
 if n_components_pca == False:
-    n_components_pca = min (5 * (used_cell_cluster_number - 1), int (0.01 * gene_number))
+    n_components_pca = min (5 * (used_cell_cluster_number - 1), int(0.01 * gene_number))
 
 n_components_lda = parameters.nComponentsLDA
 if n_components_lda == False:
@@ -71,7 +72,10 @@ if n_components_pca < n_components_lda:
 
 expression_matrix = PCA (n_components=n_components_pca, svd_solver="full").fit_transform (expression_matrix)
 print ("Matrix shape after PCA: ", expression_matrix.shape)
-expression_matrix = LDA (n_components=n_components_lda).fit_transform (expression_matrix, cell_type_array)
+oa = OAS(store_precision=False, assume_centered=False)
+expression_matrix = LDA (n_components=n_components_lda,
+                         covariance_estimator=OAS(store_precision=False, assume_centered=False),
+                         solver='eigen').fit_transform (expression_matrix, cell_type_array)
 print ("Matrix shape after LDA: ", expression_matrix.shape)
 
 
@@ -111,8 +115,8 @@ for path_name in paths.keys ():
         Q1, Q3 = np.percentile (ddd, [25, 75])
         IQR = Q3 - Q1
         dis_cut_off = Q3 + 1.5 * IQR
-        filter_array[clu_cells[
-            ddd > dis_cut_off]] = False  # print (sum (filter_array), (1 - sum (filter_array) / len (filter_array)) * 100)
+        filter_array[clu_cells[ddd > dis_cut_off]] = False
+        # print (sum (filter_array), (1 - sum (filter_array) / len (filter_array)) * 100)
     print ("{} cells in this path after filtering.".format (len (filter_array)))
     print ("{:.4f} % of cells are filtered.".format ((1 - sum (filter_array) / len (filter_array)) * 100))
 
@@ -149,8 +153,8 @@ for path_name in paths.keys ():
         Q1, Q3 = np.percentile (ddd, [25, 75])
         IQR = Q3 - Q1
         dis_cut_off = Q3 + 1.5 * IQR
-        filter_array[clu_cells[
-            ddd > dis_cut_off]] = False  # print (sum (filter_array), (1 - sum (filter_array) / len (filter_array)) * 100)
+        filter_array[clu_cells[ddd > dis_cut_off]] = False
+        # print (sum (filter_array), (1 - sum (filter_array) / len (filter_array)) * 100)
     print ("{} cells in this path after filtering.".format (len (filter_array)))
     print ("{:.4f} % of cells are filtered.".format ((1 - sum (filter_array) / len (filter_array)) * 100))
 
